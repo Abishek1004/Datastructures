@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class Node{
@@ -71,51 +70,66 @@ public class LinkedList {
     }
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
-        String userChoice = null;
+        LinkedList list = new LinkedList(); // your custom LinkedList class
+        Scanner input = new Scanner(System.in);
+        int choice = 0;
+        try{
             do {
-                int choice, data, index;
-                Scanner input = new Scanner(System.in);
-                System.out.println("1.Insert Beginning.");
-                System.out.println("2.Insert Middle.");
-                System.out.println("3.Insert Last.");
-                System.out.println("4.Delete Node.");
-                System.out.println("5.Display");
-                System.out.print("Enter Your Choice : ");
-                choice = input.nextInt();
-                switch (choice) {
-                    case 1:
-                        System.out.print("Enter a Value to Insert : ");
-                        data = input.nextInt();
-                        list.InsertBeginning(data);
-                        break;
-                    case 2:
-                        System.out.println("Enter a Index : ");
-                        index=input.nextInt();
-                        System.out.print("Enter a Value to Insert : ");
-                        data = input.nextInt();
-                        list.InsertMiddle(index,data);
-                        break;
-                    case 3:
-                        System.out.print("Enter a Value to Insert : ");
-                        data = input.nextInt();
-                        list.InsertLast(data);
-                        break;
-                    case 4:
-                        System.out.println("Enter a Value to Delete :");
-                        data=input.nextInt();
-                        list.Delete(data);
-                        break;
-                    case 5:
-                        list.Display();
-                        break;
-                    default:
-                        System.err.print("Invalid Choice.");
-                        break;
-                }
-                System.out.print("Do you want to continue (yes/no) :");
-                userChoice = input.next();
-            } while (userChoice.equalsIgnoreCase("yes"));
-            
+            System.out.println("\n--- Linked List Menu ---");
+            System.out.println("1. Insert at Beginning");
+            System.out.println("2. Insert in Middle");
+            System.out.println("3. Insert at End");
+            System.out.println("4. Delete Node");
+            System.out.println("5. Display List");
+            System.out.println("6. Exit");
+            System.out.print("Enter your choice: ");
+            choice = input.nextInt();
+
+            int data, index;
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter a value to insert: ");
+                    data = input.nextInt();
+                    list.InsertBeginning(data);
+                    break;
+
+                case 2:
+                    System.out.print("Enter an index: ");
+                    index = input.nextInt();
+                    System.out.print("Enter a value to insert: ");
+                    data = input.nextInt();
+                    list.InsertMiddle(index, data);
+                    break;
+
+                case 3:
+                    System.out.print("Enter a value to insert: ");
+                    data = input.nextInt();
+                    list.InsertLast(data);
+                    break;
+
+                case 4:
+                    System.out.print("Enter a value to delete: ");
+                    data = input.nextInt();
+                    list.Delete(data);
+                    break;
+
+                case 5:
+                    list.Display();
+                    break;
+
+                case 6:
+                    System.out.println("Exiting program...");
+                    break;
+
+                default:
+                    System.err.println("Invalid choice. Please try again.");
+            }
+        } while (choice != 6);
+        input.close();
+        }catch(Exception e){
+            System.err.println("Invalid input. Please enter numeric values only.");
+            input.next(); // clear the invalid input
+        }
     }
 }
