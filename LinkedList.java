@@ -29,6 +29,7 @@ public class LinkedList {
         Node newNode=new Node(data);
         newNode.next=temp.next;
         temp.next = newNode;
+        System.out.println("Value Inserted.");
     }
 
 
@@ -42,6 +43,7 @@ public class LinkedList {
             temp = temp.next;
         }
         temp.next = newNode;
+        System.out.println("Value Inserted at last.");
     }
 
     void Delete(int data){
@@ -58,6 +60,28 @@ public class LinkedList {
             return;
         }
         temp.next = temp.next.next;
+        System.out.println("Node with value "+data+" deleted.");
+    }
+
+    void deleteIndex(int index){
+        Node temp=head;
+        for(int i=0;i<index-1;i++){
+            temp=temp.next;
+        }
+        temp.next=temp.next.next;
+        System.out.println("Node deleted at index "+index);
+    }
+
+    void search(int data){
+        Node temp=head;
+        while(temp!=null){
+            if(temp.data==data){
+                System.out.println("Value found in the list.");
+                return;
+            }
+            temp=temp.next;
+        }
+        System.out.println("Value not found in the list.");  
     }
 
     void Display(){
@@ -79,9 +103,11 @@ public class LinkedList {
             System.out.println("1. Insert at Beginning");
             System.out.println("2. Insert in Middle");
             System.out.println("3. Insert at End");
-            System.out.println("4. Delete Node");
-            System.out.println("5. Display List");
-            System.out.println("6. Exit");
+            System.out.println("4. Delete By Value");
+            System.out.println("5. Delete at Index");
+            System.out.println("6. Search Node");
+            System.out.println("7. Display List");
+            System.out.println("8. Exit");
             System.out.print("Enter your choice: ");
             choice = input.nextInt();
 
@@ -115,21 +141,33 @@ public class LinkedList {
                     break;
 
                 case 5:
-                    list.Display();
+                    System.out.println("Enter an index to delete: ");
+                    index=input.nextInt();
+                    list.deleteIndex(index);
                     break;
 
                 case 6:
+                    System.out.print("Enter a value to search: ");
+                    data = input.nextInt();
+                    list.search(data);
+                    break;
+
+                case 7:
+                    list.Display();
+                    break;
+
+                case 8:
                     System.out.println("Exiting program...");
                     break;
 
                 default:
                     System.err.println("Invalid choice. Please try again.");
             }
-        } while (choice != 6);
+        } while (choice != 8);
         input.close();
         }catch(Exception e){
             System.err.println("Invalid input. Please enter numeric values only.");
-            input.next(); // clear the invalid input
+            input.next(); 
         }
     }
 }
