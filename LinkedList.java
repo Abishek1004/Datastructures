@@ -181,7 +181,7 @@ public class LinkedList {
                 default:
                     System.err.println("Invalid choice. Please try again.");
             }
-        } while (choice != 10);
+        } while (choice != 9);
         input.close();
         }catch(Exception e){
             System.err.println("Invalid input. Please enter numeric values only.");
