@@ -119,8 +119,9 @@ public class LinkedList {
             System.out.println("4. Delete By Value");
             System.out.println("5. Delete at Index");
             System.out.println("6. Search Node");
-            System.out.println("7. Display List");
-            System.out.println("8. Exit");
+            System.out.println("7. Reverse List");
+            System.out.println("8. Display List");
+            System.out.println("9. Exit");
             System.out.print("Enter your choice: ");
             choice = input.nextInt();
 
@@ -166,17 +167,21 @@ public class LinkedList {
                     break;
 
                 case 7:
+                    list.Reverse();
+                    System.out.println("List Reversed.");
+                    break;
+                case 8:
                     list.Display();
                     break;
 
-                case 8:
+                case 9:
                     System.out.println("Exiting program...");
                     break;
 
                 default:
                     System.err.println("Invalid choice. Please try again.");
             }
-        } while (choice != 8);
+        } while (choice != 10);
         input.close();
         }catch(Exception e){
             System.err.println("Invalid input. Please enter numeric values only.");
