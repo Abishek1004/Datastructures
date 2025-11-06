@@ -84,6 +84,19 @@ public class LinkedList {
         System.out.println("Value not found in the list.");  
     }
 
+    void Reverse(){
+        Node prev = null;
+        Node current = head;
+        Node next=null;
+        while(current != null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
+    }
+
     void Display(){
         Node temp = head;
         while(temp!=null){
