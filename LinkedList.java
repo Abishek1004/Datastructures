@@ -89,10 +89,10 @@ public class LinkedList {
         Node current = head;
         Node next=null;
         while(current != null){
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
+            next = current.next;  //-->store next node backup(to not lose it)
+            current.next = prev;  //-->reverse the link
+            prev = current;     //-->move prev to current node
+            current = next;    //-->move to next node
         }
         head = prev;
     }
